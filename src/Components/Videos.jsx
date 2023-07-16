@@ -4,15 +4,15 @@ import VideoCard from './VideoCard';
 import ChannelCard from './ChannelCard';
 
  
-const Vedios = ({ vedios }) => {
-  if (!Array.isArray(vedios)) {
-    // Handle the case where vedios is not a valid array
+const Videos = ({ video }) => {
+  if (!Array.isArray(video)) {
+    // Handle the case where video is not a valid array
     return null;
   }
 
   return (
     <Stack direction='row' flexWrap='wrap' justifyContent="start" gap={2}>
-      {vedios.map((item, index) => (
+      {video.map((item, index) => (
         <Box key={index}>
           {item.id.videoId && <VideoCard video={item}/>}
           {item.id.channelId && <ChannelCard channelDetail={item}/>}
@@ -22,4 +22,4 @@ const Vedios = ({ vedios }) => {
   );
 }
 
-export default Vedios;
+export default Videos;

@@ -2,12 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Box } from '@mui/material'
-import Vedios from './Vedios'
+import Videos from './Videos'
 import ChannelCard from './ChannelCard'
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 const ChannelDetail = () => {
   const [channelDetail, setChannelDetail] = useState()
-  const [vedios, setVedios] = useState()
+  const [video, setVideos] = useState()
   const { id } = useParams();
   console.log(channelDetail);
   useEffect(() => {
@@ -15,7 +15,7 @@ const ChannelDetail = () => {
       .then((data) => setChannelDetail(data?.items[0]));
 
     fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`)
-      .then((data) => setVedios(data?.items));
+      .then((data) => setVideos(data?.items));
   }, [id])
 
   return (
@@ -26,7 +26,7 @@ const ChannelDetail = () => {
       </Box>
       <Box display="flex" p="2">
 <Box sx={{mr:{sm:'100px'}}}/>
- <Vedios vedios={vedios}/>
+ <Videos video={video}/>
 
       </Box>
     </Box>
